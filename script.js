@@ -8,6 +8,8 @@ const eraser = document.querySelector('#eraser');
 const clear = document.querySelector('#clear');
 const buttons = document.querySelectorAll('.btn');
 const gridSize = document.querySelector('#gridSize');
+const gridLines = document.querySelector('#grid-lines');
+const lineToggle = document.querySelector('.line-toggle');
 
 let numSquares = 16;
 
@@ -113,3 +115,32 @@ function randomRGB() {
   let RGBColor = `rgb(${r},${g},${b})`;
   return RGBColor;
 }
+
+let lines = true;
+
+const borderVariable = '--border';
+
+// const stylesheet = document.styleSheets[0];
+// let classRule;
+
+// for (let i = 0; i < stylesheet.cssRules.length; i++) {
+//   if (stylesheet.cssRules[i].selectorText === '.box') {
+//     classRule = stylesheet.cssRules[i];
+//   }
+// }
+
+function toggleLines() {
+  if (!lines) {
+    document.documentElement.style.setProperty(
+      borderVariable,
+      '.5px solid black'
+    );
+    lineToggle.innerText = 'On';
+  } else {
+    document.documentElement.style.setProperty(borderVariable, 'none');
+    lineToggle.innerText = 'Off';
+  }
+  lines = !lines;
+}
+
+gridLines.addEventListener('click', toggleLines);
