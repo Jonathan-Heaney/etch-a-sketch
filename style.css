@@ -78,6 +78,10 @@ h1 {
   margin-bottom: -30px;
 }
 
+#size {
+  cursor: pointer;
+}
+
 #container {
   background-color: #fff;
   min-width: 450px;
