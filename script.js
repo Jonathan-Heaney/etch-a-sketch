@@ -69,10 +69,6 @@ eraser.addEventListener('click', function (e) {
   rainbowMode.style.color = 'black';
 });
 
-clear.addEventListener('click', function () {
-  container.style.backgroundColor = 'black';
-});
-
 function changeColor(e) {
   if (e.type === 'mouseover' && !mouseDown) return;
   if (e.target.classList.contains('box')) {

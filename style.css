@@ -36,6 +36,23 @@ h1 {
 
 #color {
   align-self: center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  width: 80px;
+  height: 80px;
+  border: none;
+  cursor: pointer;
+}
+
+#color::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#color::-webkit-color-swatch {
+  border-radius: 50%;
+  border: none;
 }
 
 .btn {
