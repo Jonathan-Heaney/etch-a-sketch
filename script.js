@@ -2,7 +2,7 @@
 const container = document.querySelector('#container');
 const boxes = document.querySelectorAll('.box');
 
-let numSquares = 64;
+let numSquares = 20;
 
 function makeGrid(num) {
   container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
