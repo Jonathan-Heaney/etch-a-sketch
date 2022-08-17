@@ -65,13 +65,14 @@ colorMode.addEventListener('click', function (e) {
   e.target.style.color = 'white';
   eraser.style.backgroundColor = 'white';
   eraser.style.color = 'black';
-  rainbowMode.style.backgroundColor = 'white';
+  rainbowMode.style.backgroundImage = 'none';
   rainbowMode.style.color = 'black';
 });
 
 rainbowMode.addEventListener('click', function (e) {
   colorType = 'rainbow';
-  e.target.style.backgroundColor = 'black';
+  e.target.style.backgroundImage =
+    'linear-gradient(315deg, red,orange,green,blue,violet)';
   e.target.style.color = 'white';
   eraser.style.backgroundColor = 'white';
   eraser.style.color = 'black';
@@ -85,7 +86,7 @@ eraser.addEventListener('click', function (e) {
   e.target.style.color = 'white';
   colorMode.style.backgroundColor = 'white';
   colorMode.style.color = 'black';
-  rainbowMode.style.backgroundColor = 'white';
+  rainbowMode.style.backgroundImage = 'none';
   rainbowMode.style.color = 'black';
 });
 
@@ -119,15 +120,7 @@ function randomRGB() {
 let lines = true;
 
 const borderVariable = '--border';
-
-// const stylesheet = document.styleSheets[0];
-// let classRule;
-
-// for (let i = 0; i < stylesheet.cssRules.length; i++) {
-//   if (stylesheet.cssRules[i].selectorText === '.box') {
-//     classRule = stylesheet.cssRules[i];
-//   }
-// }
+const rainbowVariable = '--rainbow';
 
 function toggleLines() {
   if (!lines) {
