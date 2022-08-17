@@ -7,8 +7,9 @@ const colorPicker = document.querySelector('#color');
 const eraser = document.querySelector('#eraser');
 const clear = document.querySelector('#clear');
 const buttons = document.querySelectorAll('.btn');
+const gridSize = document.querySelector('#gridSize');
 
-let numSquares = 20;
+let numSquares = 16;
 
 function makeGrid(num) {
   container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
@@ -22,6 +23,23 @@ function makeGrid(num) {
 }
 
 makeGrid(numSquares);
+
+function deleteGrid(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function clearGrid() {
+  deleteGrid(container);
+  makeGrid(numSquares);
+}
+
+function updateGrid(num) {
+  numSquares = num;
+  deleteGrid(container);
+  makeGrid(num);
+}
 
 container.addEventListener('mouseover', changeColor);
 container.addEventListener('mousedown', changeColor);
@@ -68,6 +86,12 @@ eraser.addEventListener('click', function (e) {
   rainbowMode.style.backgroundColor = 'white';
   rainbowMode.style.color = 'black';
 });
+
+clear.addEventListener('click', clearGrid);
+
+function updateLabel(size) {
+  gridSize.innerText = `${size} x ${size}`;
+}
 
 function changeColor(e) {
   if (e.type === 'mouseover' && !mouseDown) return;

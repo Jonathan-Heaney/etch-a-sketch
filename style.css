@@ -17,7 +17,7 @@ body {
 }
 
 h1 {
-  margin: 32px;
+  margin: 24px 0 0 0;
   font-size: 3rem;
 }
 .main {
@@ -26,7 +26,7 @@ h1 {
   justify-content: center;
 }
 
-.colors {
+.toggles {
   display: flex;
   flex-direction: column;
   margin: 3rem;
@@ -40,8 +40,8 @@ h1 {
   -webkit-appearance: none;
   appearance: none;
   background: none;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border: none;
   cursor: pointer;
 }
@@ -74,16 +74,20 @@ h1 {
   transform: scale(1.05);
 }
 
-/* .btn:active {
-  transform: scale(0.98);
-} */
+#gridSize {
+  margin-bottom: -30px;
+}
 
 #container {
   background-color: #fff;
-  min-width: 500px;
-  min-height: 500px;
+  min-width: 450px;
+  min-height: 450px;
   display: grid;
   margin-top: 20px;
   z-index: 1;
   box-shadow: 0 0 10px gray;
+}
+
+.box {
+  border: 0.5px solid black;
 }

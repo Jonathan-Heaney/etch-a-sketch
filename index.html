@@ -11,12 +11,23 @@
   <body>
     <h1>Etch-a-Sketch</h1>
     <main class="main">
-      <div class="colors">
+      <div class="toggles">
         <input type="color" name="color" id="color" />
         <button class="btn" id="color-mode">Color Mode</button>
         <button class="btn" id="rainbow-mode">Rainbow Mode</button>
         <button class="btn" id="eraser">Eraser</button>
-        <!-- <button class="btn" id="clear">Clear</button> -->
+        <button class="btn" id="clear">Clear</button>
+        <label id="gridSize" for="size">12 x 12</label>
+        <input
+          type="range"
+          name="size"
+          id="size"
+          min="1"
+          max="50"
+          step="1"
+          value="16"
+          oninput="updateGrid(this.value), updateLabel(this.value)"
+        />
       </div>
       <div id="container"></div>
     </main>
