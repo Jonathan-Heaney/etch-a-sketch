@@ -4,6 +4,9 @@ const boxes = document.querySelectorAll('.box');
 const colorMode = document.querySelector('#color-mode');
 const rainbowMode = document.querySelector('#rainbow-mode');
 const colorPicker = document.querySelector('#color');
+const eraser = document.querySelector('#eraser');
+const clear = document.querySelector('#clear');
+const buttons = document.querySelectorAll('.btn');
 
 let numSquares = 20;
 
@@ -34,18 +37,40 @@ function updateColor() {
   color = colorPicker.value;
 }
 
-function updateFirst() {
-  color = colorPicker.value;
-}
+colorPicker.addEventListener('input', updateColor, false);
 
-colorPicker.addEventListener('input', updateFirst, false);
-
-colorMode.addEventListener('click', function () {
+colorMode.addEventListener('click', function (e) {
   colorType = 'color';
+  e.target.style.backgroundColor = 'black';
+  e.target.style.color = 'white';
+  eraser.style.backgroundColor = 'white';
+  eraser.style.color = 'black';
+  rainbowMode.style.backgroundColor = 'white';
+  rainbowMode.style.color = 'black';
 });
 
-rainbowMode.addEventListener('click', function () {
+rainbowMode.addEventListener('click', function (e) {
   colorType = 'rainbow';
+  e.target.style.backgroundColor = 'black';
+  e.target.style.color = 'white';
+  eraser.style.backgroundColor = 'white';
+  eraser.style.color = 'black';
+  colorMode.style.backgroundColor = 'white';
+  colorMode.style.color = 'black';
+});
+
+eraser.addEventListener('click', function (e) {
+  colorType = 'eraser';
+  e.target.style.backgroundColor = 'black';
+  e.target.style.color = 'white';
+  colorMode.style.backgroundColor = 'white';
+  colorMode.style.color = 'black';
+  rainbowMode.style.backgroundColor = 'white';
+  rainbowMode.style.color = 'black';
+});
+
+clear.addEventListener('click', function () {
+  container.style.backgroundColor = 'black';
 });
 
 function changeColor(e) {
@@ -55,6 +80,8 @@ function changeColor(e) {
       e.target.style.backgroundColor = `${randomRGB()}`;
     } else if (colorType === 'color') {
       e.target.style.backgroundColor = color;
+    } else if (colorType === 'eraser') {
+      e.target.style.backgroundColor = 'white';
     }
   }
 }
