@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#container {
+  border: 2px solid blue;
+  width: 500px;
+  height: 500px;
+  display: grid;
+  margin-top: 20px;
+}
+
+.box {
+  border: 1px solid black;
+}
+
+.filled-box {
+  background-color: blue;
+}
