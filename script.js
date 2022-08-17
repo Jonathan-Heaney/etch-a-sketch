@@ -1,7 +1,8 @@
 'use strict';
 const container = document.querySelector('#container');
+const boxes = document.querySelectorAll('.box');
 
-let numSquares = 16;
+let numSquares = 64;
 
 function makeGrid(num) {
   container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
@@ -16,17 +17,24 @@ function makeGrid(num) {
 
 makeGrid(numSquares);
 
-const boxes = document.querySelectorAll('.box');
+container.addEventListener('mouseover', changeColor);
+container.addEventListener('mousedown', changeColor);
 
-container.addEventListener('mouseover', function (e) {
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
+function changeColor(e) {
+  if (e.type === 'mouseover' && !mouseDown) return;
   if (e.target.classList.contains('box')) {
-    e.target.style.backgroundColor = 'red';
+    e.target.style.backgroundColor = `${randomRGB()}`;
   }
-});
+}
 
 function randomRGB() {
   let r = Math.floor(Math.random() * 256);
   let g = Math.floor(Math.random() * 256);
   let b = Math.floor(Math.random() * 256);
   let RGBColor = `rgb(${r},${g},${b})`;
+  return RGBColor;
 }
