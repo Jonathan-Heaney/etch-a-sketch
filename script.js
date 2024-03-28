@@ -50,6 +50,16 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+// New touch event listeners
+container.addEventListener('touchstart', changeColor, { passive: false });
+container.addEventListener('touchmove', changeColor, { passive: false });
+document.body.addEventListener('touchstart', () => (mouseDown = true), {
+  passive: false,
+});
+document.body.addEventListener('touchend', () => (mouseDown = false), {
+  passive: false,
+});
+
 let colorType = 'color';
 let color = colorPicker.value;
 
@@ -97,15 +107,29 @@ function updateLabel(size) {
 }
 
 function changeColor(e) {
-  if (e.type === 'mouseover' && !mouseDown) return;
-  if (e.target.classList.contains('box')) {
-    if (colorType === 'rainbow') {
-      e.target.style.backgroundColor = `${randomRGB()}`;
-    } else if (colorType === 'color') {
-      e.target.style.backgroundColor = color;
-    } else if (colorType === 'eraser') {
-      e.target.style.backgroundColor = 'white';
-    }
+  // Prevent default scrolling behavior on touch
+  if (e.type.startsWith('touch')) e.preventDefault();
+
+  // Adapt the event object for touch events
+  let target = e.target;
+  if (e.type.startsWith('touch')) {
+    target = document.elementFromPoint(
+      e.touches[0].clientX,
+      e.touches[0].clientY
+    );
+    if (!target || !target.classList.contains('box')) return;
+  } else {
+    if (e.type === 'mouseover' && !mouseDown) return;
+    if (!e.target.classList.contains('box')) return;
+  }
+
+  // Existing color changing logic
+  if (colorType === 'rainbow') {
+    target.style.backgroundColor = `${randomRGB()}`;
+  } else if (colorType === 'color') {
+    target.style.backgroundColor = color;
+  } else if (colorType === 'eraser') {
+    target.style.backgroundColor = 'white';
   }
 }
 
