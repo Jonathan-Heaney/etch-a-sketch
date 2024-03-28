@@ -80,6 +80,7 @@ h1 {
 }
 
 #container {
+  background-color: #fff;
   width: 90vw; /* Use viewport width to fill screen width */
   height: 90vw; /* Maintain square aspect ratio */
   max-width: 600px; /* Maximum size to not be too large on desktop */
@@ -94,7 +95,7 @@ h1 {
   border: var(--border);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 820px) {
   .main {
     flex-direction: row; /* Revert to row layout for larger screens */
   }
