@@ -19,24 +19,28 @@ body {
   justify-content: center;
   background-color: lightblue;
   font-family: 'Poppins', sans-serif;
+  padding: 20px; /* Added padding for mobile devices */
 }
 
 h1 {
-  margin: 24px 0 0 0;
-  font-size: 3rem;
+  margin: 20px 0;
+  font-size: 2.5rem; /* Smaller font size for mobile devices */
 }
+
 .main {
   display: flex;
+  flex-direction: column; /* Change to column layout for mobile */
   align-items: center;
   justify-content: center;
+  width: 100%; /* Ensure it doesn't overflow on mobile */
 }
 
 .toggles {
   display: flex;
-  flex-direction: column;
-  margin: 3rem;
-  gap: 24px;
-  justify-content: center;
+  flex-direction: column; /* Keeps controls in a column layout */
+  align-items: center; /* Center align the control buttons */
+  margin: 20px;
+  gap: 16px; /* Reduce the gap for smaller screens */
 }
 
 #color {
@@ -61,46 +65,45 @@ h1 {
 }
 
 .btn {
+  width: 90%; /* Make color picker and buttons fill container */
+  max-width: 300px; /* Max width to prevent being too wide on desktop */
+}
+
+.btn {
   font-family: inherit;
   padding: 8px 20px;
   border-radius: 5px;
   border: 1px solid black;
   background-color: white;
   color: black;
-}
-
-#color-mode {
-  background-color: black;
-  color: white;
-}
-
-.btn:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
-
-#gridSize {
-  margin-bottom: -20px;
-}
-
-#size {
-  cursor: pointer;
+  font-size: 1rem; /* Make text larger for better readability on mobile */
 }
 
 #container {
-  background-color: #fff;
-  min-width: 450px;
-  min-height: 450px;
+  width: 90vw; /* Use viewport width to fill screen width */
+  height: 90vw; /* Maintain square aspect ratio */
+  max-width: 600px; /* Maximum size to not be too large on desktop */
+  max-height: 600px; /* Maintain aspect ratio */
   display: grid;
-  margin-top: 20px;
-  z-index: 1;
+  margin: 20px 0;
   box-shadow: 0 0 10px gray;
+  overflow: hidden; /* Prevents overflow causing scroll on mobile */
 }
 
 .box {
   border: var(--border);
 }
 
-.line-toggle {
-  font-weight: 600;
+@media (min-width: 768px) {
+  .main {
+    flex-direction: row; /* Revert to row layout for larger screens */
+  }
+  .toggles {
+    flex-direction: column; /* Side-by-side layout for controls */
+    justify-content: center;
+    gap: 24px; /* Increase gap for larger screens */
+  }
+  h1 {
+    font-size: 3rem; /* Increase font size for desktop */
+  }
 }
